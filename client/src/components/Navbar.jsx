@@ -54,7 +54,7 @@ const Navbar = () => {
               <Text fontWeight='extrabold'>Tech Lines</Text>
             </Flex>
           </Link>
-          <HStack>
+          <HStack as='nav' spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
               <NavLink key={link.linkName} path={link.path}>
                 {link.linkName}
@@ -63,15 +63,40 @@ const Navbar = () => {
           </HStack>
         </HStack>
         <Flex alignItems='center'>
-          <NavLink>
-            <Icon
-              as={colorMode === "light" ? MoonIcon : SunIcon}
-              alignSelf='center'
-              onClick={() => toggleColorMode()}
-            />
-          </NavLink>
+          <Icon as={colorMode === "light" ? MoonIcon : SunIcon} alignSelf='center' onClick={() => toggleColorMode()} />
+
+          <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
+            Sign In
+          </Button>
+          <Button
+            as={ReactLink}
+            to='/registration'
+            m={2}
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize='sm'
+            fontWeight={600}
+            _hover={{ bg: "orange.400" }}
+            bg='orange.500'
+            color='white'
+          >
+            Sign In
+          </Button>
         </Flex>
       </Flex>
+      {isOpen ? (
+        <Box pb={4} display={{ md: "none" }}>
+          <Stack as='nav' spacing={4}>
+            {links.map((link) => (
+              <NavLink key={link.linkName} path={link.path}>
+                {link.linkName}
+              </NavLink>
+            ))}
+            <NavLink key='sign up' path='/registration'>
+              Sign Up
+            </NavLink>
+          </Stack>
+        </Box>
+      ) : null}
     </Box>
   );
 };
