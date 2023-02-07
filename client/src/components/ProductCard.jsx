@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
       });
     } else {
       dispatch(addCartItem(id, 1));
-      toast({ description: "Item has been added", status: "success", isClosable: true });
+      toast({ description: "Item has been added.", status: "success", isClosable: true });
     }
   };
 
@@ -68,16 +68,16 @@ const ProductCard = ({ product }) => {
       borderWidth='1px'
       rounded='lg'
       shadow='lg'
-      postion='relative'
+      position='relative'
     >
-      {product.productisNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
+      {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.200' />}
       <Image p={4} src={product.image} alt={product.name} roundedTop='lg' />
 
       <Box flex='1' maxH='5' alignItems='baseline'>
         {product.stock <= 0 && (
           <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='red'>
-            Sold Out
+            Sold out
           </Badge>
         )}
         {product.productIsNew && (
@@ -86,7 +86,6 @@ const ProductCard = ({ product }) => {
           </Badge>
         )}
       </Box>
-
       <Flex mt='1' justifyContent='space-between' alignContent='center'>
         <Link as={ReactLink} to={`/product/${product._id}`} pt='2' cursor='pointer'>
           <Box fontSize='2xl' fontWeight='semibold' as='h4' lineHeight='tight'>
@@ -102,10 +101,10 @@ const ProductCard = ({ product }) => {
           <Box as='span' color={"gray.600"} fontSize='lg'>
             $
           </Box>
-          {product.price.toFixed(2)}
+          {Number(product.price).toFixed(2)}
         </Box>
-        <Tooltip label='Add to cart' bg='white' placement={"top"} color='gray.800' fontSize={"1.2em"}>
-          <Button variant='ghost' display='flex' isDisabled={product.stock <= 0} onClick={() => addItem(product._id)}>
+        <Tooltip label='Add to cart' bg='white' placement={"top"} color={"gray.800"} fontSize={"1.2em"}>
+          <Button variant='ghost' display={"flex"} isDisabled={product.stock <= 0} onClick={() => addItem(product._id)}>
             <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
           </Button>
         </Tooltip>
