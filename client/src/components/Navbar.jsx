@@ -33,7 +33,7 @@ const ShoppingCartIcon = () => {
   const { cart } = cartInfo;
   return (
     <Flex>
-      <Text fontStyle='italic' as='sub' C fontSize='xs'>
+      <Text fontStyle='italic' as='sub' fontSize='xs'>
         {cart.length}
       </Text>
       <Icon ml='-1.5' as={FiShoppingCart} h='4' w='7' alignSelf='center' />
