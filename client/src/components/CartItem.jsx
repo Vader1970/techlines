@@ -21,7 +21,7 @@ const CartItem = ({ cartItem }) => {
         mt={{ base: "4", md: "0" }}
         align={{ base: "center", md: "baseline" }}
         justify='space-between'
-        diplsy='flex'
+        display='flex'
       >
         <Select
           maxW='64px'
